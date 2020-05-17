@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
     color:'#11A8FD'
   }
-}));
+})); 
 
 export default function SlideBar({ open }) {
   const classes = useStyles();
