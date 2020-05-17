@@ -9,10 +9,15 @@ import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
+import SlideBar from "./SlideBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  appBar: {
+    position: "relative",
+    zIndex: theme.zIndex.drawer + 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -71,27 +76,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+
+  const handleOpenSidebarChange = event => setOpen(!open);
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="secondary">
+      <AppBar className={classes.appBar} position="static" color="secondary">
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="primary"
             aria-label="menu"
+            onClick={handleOpenSidebarChange}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6"  className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             AmpBeat
           </Typography>
-          <div className={classes.search} >
-            <div className={classes.searchIcon} >
-              <SearchIcon  color="primary" />
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon color="primary" />
             </div>
             <InputBase
               placeholder="Search…"
@@ -105,7 +117,11 @@ export default function ButtonAppBar() {
           <Button color="inherit" className={classes.sectionDesktop}>
             Log in
           </Button>
-          <Button color="inherit"  color="primary" className={classes.sectionDesktop}>
+          <Button
+            color="inherit"
+            color="primary"
+            className={classes.sectionDesktop}
+          >
             Sign Up
           </Button>
           <div>
@@ -115,11 +131,12 @@ export default function ButtonAppBar() {
               aria-haspopup="true"
               color="inherit"
             >
-              <AccountCircle   />
+              <AccountCircle />
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
+      <SlideBar open={open} color="secondary"></SlideBar>
     </div>
   );
 }

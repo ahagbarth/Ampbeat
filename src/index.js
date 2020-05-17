@@ -21,6 +21,9 @@ const theme = createMuiTheme({
     },
     background: {
       default: "#202326"
+    },
+    paper: {
+      background: "#202326"
     }
     // 005EA3
 
