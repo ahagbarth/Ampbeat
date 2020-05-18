@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SlideBar({ open }) {
   const classes = useStyles();
-  const [openSubComponent, setOpenSubComponent] = React.useState(true);
+  const [openSubComponent, setOpenSubComponent] = React.useState(false);
 
   const handleClick = () => {
     setOpenSubComponent(!openSubComponent);
